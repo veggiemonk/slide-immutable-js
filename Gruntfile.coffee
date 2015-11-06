@@ -30,7 +30,7 @@ module.exports = (grunt) ->
             jshint:
                 files: ['js/*.js']
                 tasks: ['jshint']
-        
+
         connect:
 
             livereload:
@@ -67,7 +67,7 @@ module.exports = (grunt) ->
                     expand: true
                     src: [
                         'slides/**'
-                        'bower_components/**'
+                        'node_modules/(vis|reveal.js|highlightjs)/**'
                         'js/**'
                         'resources/**'
                     ]
@@ -79,7 +79,7 @@ module.exports = (grunt) ->
                     filter: 'isFile'
                 }]
 
-        
+
         buildcontrol:
 
             options:
@@ -91,7 +91,7 @@ module.exports = (grunt) ->
                 options:
                     remote: 'git@github.com:veggiemonk/slide-immutable-js.git'
                     branch: 'gh-pages'
-        
+
 
 
     # Load all grunt tasks.
@@ -133,13 +133,13 @@ module.exports = (grunt) ->
             'copy'
         ]
 
-    
+
     grunt.registerTask 'deploy',
         'Deploy to Github Pages', [
             'dist'
             'buildcontrol'
         ]
-    
+
 
     # Define default task.
     grunt.registerTask 'default', [
