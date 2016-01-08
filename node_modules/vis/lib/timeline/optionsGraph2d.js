@@ -33,7 +33,8 @@ let allOptions = {
   graphHeight: {string, number},
   shaded: {
     enabled: {boolean},
-    orientation: {string:['bottom','top']}, // top, bottom
+    orientation: {string:['bottom','top','zero','group']}, // top, bottom, zero, group
+    groupId: {object},
     __type__: {boolean,object}
   },
   style: {string:['line','bar','points']}, // line, bar
@@ -161,6 +162,7 @@ let allOptions = {
   zoomKey: {string: ['ctrlKey', 'altKey', 'metaKey', '']},
   zoomMax: {number},
   zoomMin: {number},
+  zIndex: {number},
   __type__: {object}
 };
 
@@ -172,7 +174,7 @@ let configureOptions = {
     stack:false,
     shaded: {
       enabled: false,
-      orientation: ['top','bottom'] // top, bottom
+      orientation: ['zero','top','bottom','group'] // zero, top, bottom
     },
     style: ['line','bar','points'], // line, bar
     barChart: {
@@ -264,7 +266,8 @@ let configureOptions = {
     zoomable: true,
     zoomKey: ['ctrlKey', 'altKey', 'metaKey', ''],
     zoomMax: [315360000000000, 10, 315360000000000, 1],
-    zoomMin: [10, 10, 315360000000000, 1]
+    zoomMin: [10, 10, 315360000000000, 1],
+    zIndex: 0
   }
 };
 

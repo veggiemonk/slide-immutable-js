@@ -27,7 +27,7 @@ var configureOptions = require('./optionsGraph2d').configureOptions;
  */
 function Graph2d (container, items, groups, options) {
   // if the third element is options, the forth is groups (optionally);
-  if (!(Array.isArray(groups) || groups instanceof DataSet) && groups instanceof Object) {
+  if (!(Array.isArray(groups) || groups instanceof DataSet || groups instanceof DataView) && groups instanceof Object) {
     var forthArgument = options;
     options = groups;
     groups = forthArgument;
@@ -217,7 +217,7 @@ Graph2d.prototype.getLegend = function(groupId, width, height) {
     return this.linegraph.groups[groupId].getLegend(width,height);
   }
   else {
-    return "cannot find group:" +  groupId;
+    return "cannot find group:'" +  groupId + "'";
   }
 };
 

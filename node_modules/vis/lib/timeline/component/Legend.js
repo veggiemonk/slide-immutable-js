@@ -30,6 +30,7 @@ function Legend(body, options, side, linegraphOptions) {
   this.groups = {};
   this.amountOfGroups = 0;
   this._create();
+  this.framework = {svg: this.svg, svgElements: this.svgElements, options: this.options, groups: this.groups};
 
   this.setOptions(options);
 }
@@ -187,7 +188,7 @@ Legend.prototype.drawLegendIcons = function() {
     var groupArray = Object.keys(this.groups);
     groupArray.sort(function (a,b) {
       return (a < b ? -1 : 1);
-    })
+    });
 
     // this resets the elements so the order is maintained
     DOMutil.resetElements(this.svgElements);
@@ -204,7 +205,7 @@ Legend.prototype.drawLegendIcons = function() {
     for (var i = 0; i < groupArray.length; i++) {
       var groupId = groupArray[i];
       if (this.groups[groupId].visible == true && (this.linegraphOptions.visibility[groupId] === undefined || this.linegraphOptions.visibility[groupId] == true)) {
-        this.groups[groupId].drawIcon(x, y, this.svgElements, this.svg, iconWidth, iconHeight);
+        this.groups[groupId].getLegend(iconWidth, iconHeight, this.framework, x, y);
         y += iconHeight + this.options.iconSpacing;
       }
     }
